@@ -96,8 +96,9 @@ soup = BeautifulSoup(html, 'lxml')
 
 #### SCRAPE DATA
 
-blocks = soup.find_all('a', 'oLinkAssetXls')
+blocks = soup.find_all('a', re.compile('oLinkAsset'))
 for block in blocks:
+    print block
     try:
             link = 'http://www.emas.nhs.uk'+block['href']
             title = block.text.strip().split()
